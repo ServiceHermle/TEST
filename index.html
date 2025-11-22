@@ -93,21 +93,6 @@
       border:1px solid var(--border);
       font-size:.85rem;
     }
-    .dates-row > div{
-      flex:1 1 0;
-      min-width:0;
-    }
-    .dates-row .btn{
-      width:auto;
-      flex:0 0 auto;
-      white-space:nowrap;
-    }
-    .dates-row input[type="date"]{
-      width:100%;
-      max-width:100%;
-      box-sizing:border-box;
-    }
-
 
 
     
@@ -193,6 +178,39 @@ input[type="date"] {
         border-radius: 0;
       }
     }
+
+.dates-row{
+  display:flex;
+  gap:6px;
+  margin-top:6px;
+  align-items:flex-end;
+  flex-wrap:wrap;
+}
+
+/* Kontejner s datem – roztáhne se, ale zůstane v rámci karty */
+.dates-row > div{
+  flex:1 1 auto;
+  min-width:0;
+}
+
+/* Datum má 100 % šířky v rámci svého sloupce a nepřetéká */
+.dates-row input[type="date"]{
+  padding:6px 8px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  font-size:.85rem;
+  width:100%;
+  max-width:100%;
+  box-sizing:border-box;
+}
+
+/* Tlačítka vedle datumu – ne na 100 %, ale podle obsahu */
+.dates-row .btn{
+  width:auto;
+  flex:0 0 auto;
+  white-space:nowrap;
+}
+
 </style>
 <style id="mobile-override">
 
@@ -236,6 +254,39 @@ input[type="date"], input[type="number"], input[type="password"], input[type="te
   .row-item{ padding:8px !important; }
 }
 /* END override */
+
+
+.dates-row{
+  display:flex;
+  gap:6px;
+  margin-top:6px;
+  align-items:flex-end;
+  flex-wrap:wrap;
+}
+
+/* Kontejner s datem – roztáhne se, ale zůstane v rámci karty */
+.dates-row > div{
+  flex:1 1 auto;
+  min-width:0;
+}
+
+/* Datum má 100 % šířky v rámci svého sloupce a nepřetéká */
+.dates-row input[type="date"]{
+  padding:6px 8px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  font-size:.85rem;
+  width:100%;
+  max-width:100%;
+  box-sizing:border-box;
+}
+
+/* Tlačítka vedle datumu – ne na 100 %, ale podle obsahu */
+.dates-row .btn{
+  width:auto;
+  flex:0 0 auto;
+  white-space:nowrap;
+}
 
 </style>
 </head>
@@ -819,7 +870,40 @@ document.getElementById('r-print').addEventListener('click', ()=>{
   const N=document.getElementById('r-machine').value; const from=document.getElementById('r-from').value; const to=document.getElementById('r-to').value; 
   const tableHTML=document.getElementById('r-table').outerHTML; 
   const w=window.open('', '_blank'); 
-  w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>HDH CODE – export</title><style>body{font-family:Arial,sans-serif;padding:16px}h1{font-size:18px;margin:0 0 8px}p{margin:0 0 12px}table{width:100%;border-collapse:collapse}th,td{border:1px solid #000;padding:6px 8px;text-align:left}th{background:#f0f0f0}</style></head><body><h1>HDH CODE – hromadný export</h1><p>Stroj N: <b>${N}</b> | Období: <b>${from}</b> – <b>${to}</b></p>${tableHTML}<script>window.onload=()=>window.print();<\/script></body></html>`); 
+  w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>HDH CODE – export</title><style>body{font-family:Arial,sans-serif;padding:16px}h1{font-size:18px;margin:0 0 8px}p{margin:0 0 12px}table{width:100%;border-collapse:collapse}th,td{border:1px solid #000;padding:6px 8px;text-align:left}th{background:#f0f0f0}
+.dates-row{
+  display:flex;
+  gap:6px;
+  margin-top:6px;
+  align-items:flex-end;
+  flex-wrap:wrap;
+}
+
+/* Kontejner s datem – roztáhne se, ale zůstane v rámci karty */
+.dates-row > div{
+  flex:1 1 auto;
+  min-width:0;
+}
+
+/* Datum má 100 % šířky v rámci svého sloupce a nepřetéká */
+.dates-row input[type="date"]{
+  padding:6px 8px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  font-size:.85rem;
+  width:100%;
+  max-width:100%;
+  box-sizing:border-box;
+}
+
+/* Tlačítka vedle datumu – ne na 100 %, ale podle obsahu */
+.dates-row .btn{
+  width:auto;
+  flex:0 0 auto;
+  white-space:nowrap;
+}
+
+</style></head><body><h1>HDH CODE – hromadný export</h1><p>Stroj N: <b>${N}</b> | Období: <b>${from}</b> – <b>${to}</b></p>${tableHTML}<script>window.onload=()=>window.print();<\/script></body></html>`); 
   w.document.close(); 
 });
 
